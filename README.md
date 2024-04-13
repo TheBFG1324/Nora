@@ -1,0 +1,2 @@
+# Nora
+Decentralized Data Farm
