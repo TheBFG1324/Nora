@@ -5,7 +5,7 @@ import {
   clearStore,
   beforeAll,
   afterAll
-} from "matchstick-as/assembly/index"
+} from "matchstick-as"
 import { Bytes, BigInt, Address } from "@graphprotocol/graph-ts"
 import { FarmCreated } from "../generated/schema"
 import { FarmCreated as FarmCreatedEvent } from "../generated/DataFarm/DataFarm"

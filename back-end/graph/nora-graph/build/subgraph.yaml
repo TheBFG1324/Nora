@@ -1,0 +1,39 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DataFarm
+    network: polygon-amoy
+    source:
+      address: "0x18cEc0aFfc7b89e20DD4C3E6a0B43b599CcaDC93"
+      abi: DataFarm
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - FarmCreated
+        - Paused
+        - ResponseAdded
+        - RewardsSent
+        - Unpaused
+      abis:
+        - name: DataFarm
+          file: DataFarm/abis/DataFarm.json
+      eventHandlers:
+        - event: FarmCreated(indexed
+            bytes32,string,uint8,uint8,uint256,uint256,bytes32,uint256,uint256)
+          handler: handleFarmCreated
+        - event: Paused(address)
+          handler: handlePaused
+        - event: ResponseAdded(indexed bytes32,bytes32,address)
+          handler: handleResponseAdded
+        - event: RewardsSent(indexed bytes32,uint256,uint256)
+          handler: handleRewardsSent
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: DataFarm/DataFarm.wasm
