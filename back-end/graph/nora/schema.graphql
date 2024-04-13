@@ -1,0 +1,51 @@
+type FarmCreated @entity(immutable: true) {
+  id: Bytes!
+  farmId: Bytes! # bytes32
+  description: String! # string
+  farmType: Int! # uint8
+  bountyType: Int! # uint8
+  payout: BigInt! # uint256
+  maxPayout: BigInt! # uint256
+  payloadHash: Bytes! # bytes32
+  payoutPeriod: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Paused @entity(immutable: true) {
+  id: Bytes!
+  by: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ResponseAdded @entity(immutable: true) {
+  id: Bytes!
+  farmId: Bytes! # bytes32
+  payload: Bytes! # bytes32
+  responder: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RewardsSent @entity(immutable: true) {
+  id: Bytes!
+  farmId: Bytes! # bytes32
+  numberOfResponders: BigInt! # uint256
+  payoutPerResponder: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Unpaused @entity(immutable: true) {
+  id: Bytes!
+  by: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
